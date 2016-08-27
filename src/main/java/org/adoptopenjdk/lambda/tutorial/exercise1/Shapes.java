@@ -22,6 +22,7 @@ package org.adoptopenjdk.lambda.tutorial.exercise1;
  * #L%
  */
 
+import java.time.Clock;
 import java.util.List;
 
 /**
@@ -49,6 +50,17 @@ public class Shapes {
      */
     public static void colorAll(List<Shape> shapes, Color newColor) {
         // [your code here]
+
+        /*
+        for(int i = 0; i < shapes.size(); i++) {
+            shapes.get(i).setColor(Color.RED);
+        }
+
+        for (Shape s: shapes){
+            s.setColor(Color.RED);
+        }*/
+
+        shapes.forEach(s -> s.setColor(Color.RED));
     }
 
     /**
@@ -68,7 +80,7 @@ public class Shapes {
      * @see Shape#toString()
      */
     public static void makeStringOfAllColors(List<Shape> shapes, StringBuilder stringBuilder) {
-        // [your code here]
+        shapes.forEach(s -> stringBuilder.append(s));
     }
 
     /**
@@ -93,6 +105,12 @@ public class Shapes {
      * @see Shape#toString()
      */
     public static void changeColorAndMakeStringOfOldColors(List<Shape> shapes, Color newColor, StringBuilder stringBuilder) {
-        // [your code here]
+        /*shapes.forEach(s -> stringBuilder.append(s));
+        shapes.forEach(s -> s.setColor(Color.RED));*/
+
+        shapes.forEach(s -> {
+            stringBuilder.append(s);
+            s.setColor(newColor);
+        });
     }
 }
